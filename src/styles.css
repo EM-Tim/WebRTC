@@ -1,0 +1,13 @@
+html {
+    font-size: 100%;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.img-archi {
+    max-width: 75%;
+    height: auto;
+    object-fit: contain;
+} 
