@@ -1,11 +1,17 @@
+const credentials = require('./credentials');
 const express = require('express');
 const app = express();
 let server;
 let port;
-const http = require('http');
-server = http.createServer(app);
-port = 3000;
-
+if (credentials.key && credentials.cert) {
+  const https = require('https');
+  server = https.createServer(credentials, app);
+  port = 443;
+} else {
+  const http = require('http');
+  server = http.createServer(app);
+  port = 3000;
+}
 const io = require('socket.io')(server);
 const RoomService = require('./RoomService')(io);
 io.sockets.on('connection', RoomService.listen);
