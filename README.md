@@ -33,6 +33,8 @@ L'application Node utilise des sockets (`socket.io`) pour communiquer les inform
 - De cette manière, les clients s'échangent leurs informations permettant la création d'une communication peer-to-peer.
 - Chacun reçoit le stream vidéo des autres participants.
 
+<img src="webrtc_socket_diagram.png" width="50%">
+
 ### Structure des fichiers
 
 - `server.js` : Lance le serveur web
