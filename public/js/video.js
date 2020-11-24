@@ -7,18 +7,30 @@
   let room = !location.pathname.substring(1) ? 'home' : location.pathname.substring(1);
   let getUserMediaAttempts = 5;
   let gettingUserMedia = false;
+  let sendChannel;
+  let receiveChannel;
+  const dataChannelSend = document.querySelector('textarea#dataChannelSend');
+  dataChannelSend.placeholder = '';
+  const dataChannelReceive = document.querySelector('textarea#dataChannelReceive');
+  const sendButton = document.querySelector('button#sendButton');
+
+  sendButton.onclick = sendData;
 
   /** @type {RTCConfiguration} */
   const config = {
     'iceServers': [{
       'urls': ['stun:stun.l.google.com:19302']
+    },{
+      urls: 'turn:diffusion-video.ddns.net:3478',
+      username: '1605984350',
+      credential: 'MHWxppa2tYDesawvP4E336reV6M='
     }]
   };
 
   /** @type {MediaStreamConstraints} */
   const constraints = {
-    // audio: true,
-    video: { facingMode: "user" }
+    audio: true,
+    video: { facingMode: "user" },
   };
 
   socket.on('full', function(room) {
@@ -37,6 +49,15 @@
     socket.close();
   };
 
+  function sendData() {
+    console.log("send channel is ", sendChannel.readyState);
+    const data = dataChannelSend.value;
+    sendChannel.send(data);
+    dataChannelReceive.value += data + "\n";
+    dataChannelSend.value = '';
+    dataChannelSend.focus();
+  }
+
   socket.on('ready', function (id) {
     if (!(localVideo instanceof HTMLVideoElement) || !localVideo.srcObject) {
       return;
@@ -44,7 +65,10 @@
     const peerConnection = new RTCPeerConnection(config);
     peerConnections[id] = peerConnection;
     if (localVideo instanceof HTMLVideoElement) {
-      peerConnection.addStream(localVideo.srcObject);
+      localVideo.srcObject.getTracks().forEach(function (track) {
+        peerConnection.addTrack(track, localVideo.srcObject);
+        sendChannel = peerConnection.createDataChannel('sendDataChannel');
+      });
     }
     peerConnection.createOffer()
     .then(sdp => peerConnection.setLocalDescription(sdp))
@@ -52,6 +76,7 @@
       socket.emit('offer', id, peerConnection.localDescription);
     });
     peerConnection.onaddstream = event => handleRemoteStreamAdded(event.stream, id);
+    peerConnection.ondatachannel = handleSendChannel;
     peerConnection.onicecandidate = function(event) {
       if (event.candidate) {
         socket.emit('candidate', id, event.candidate);
@@ -63,7 +88,9 @@
     const peerConnection = new RTCPeerConnection(config);
     peerConnections[id] = peerConnection;
     if (localVideo instanceof HTMLVideoElement) {
-      peerConnection.addStream(localVideo.srcObject);
+      localVideo.srcObject.getTracks().forEach(function (track) {
+        peerConnection.addTrack(track, localVideo.srcObject);
+      });
     }
     peerConnection.setRemoteDescription(description)
     .then(() => peerConnection.createAnswer())
@@ -72,6 +99,7 @@
       socket.emit('answer', id, peerConnection.localDescription);
     });
     peerConnection.onaddstream = event => handleRemoteStreamAdded(event.stream, id);
+    peerConnection.ondatachannel = handleRemoteData;
     peerConnection.onicecandidate = function(event) {
       if (event.candidate) {
         socket.emit('candidate', id, event.candidate);
@@ -110,6 +138,29 @@
     }
   }
 
+  function handleRemoteData(event) {
+    receiveChannel = event.channel;
+    receiveChannel.onmessage = onReceiveMessageCallback;
+    receiveChannel.onopen = handleReceiveChannelStatusChange;
+    receiveChannel.onclose = handleReceiveChannelStatusChange;
+  }
+
+  function handleReceiveChannelStatusChange(event) {
+    if (receiveChannel) {
+      console.log("Receive channel's status has changed to " + receiveChannel.readyState);
+    }
+  }
+
+  function handleSendChannel(event) {
+    if (sendChannel) {
+      let state = sendChannel.readyState;
+    }
+  }
+
+  function onReceiveMessageCallback(event) {
+    dataChannelReceive.value += event.data + '\n';
+  }
+
   function getUserMediaError(error) {
     console.error(error);
     gettingUserMedia = false;
@@ -130,6 +181,8 @@
   }
 
   function handleRemoteHangup(id) {
+    sendChannel.close();
+    receiveChannel.close();
     peerConnections[id] && peerConnections[id].close();
     delete peerConnections[id];
     document.querySelector("#" + id.replace(/[^a-zA-Z]+/g, "").toLowerCase()).remove();

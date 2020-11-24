@@ -26,6 +26,7 @@ function listen(socket) {
         socket.to(id).emit('candidate', socket.id, message);
       });
       socket.on('disconnect', function() {
+        console.log(socket.id, " s'est déconnecté");
         socket.broadcast.to(room).emit('bye', socket.id);
       });
       socket.join(room);

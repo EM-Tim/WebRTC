@@ -9,8 +9,20 @@
     <link href="/css/main.css" rel="stylesheet">
   </head>
   <body>
+    <div id="sendReceive">
+      <div id="receive">
+        <textarea id="dataChannelReceive" disabled></textarea>
+      </div>
+      <div id="send">
+        <textarea id="dataChannelSend"
+                  placeholder="Press Start, enter some text, then press Send."></textarea>
+        <div id="buttons">
+          <button id="sendButton">Send</button>
+        </div>
+      </div>
+    </div>
     <video class="localVideo" playsinline autoplay muted></video>
-    <div class="remoteVideos"></div>
+    <div class="remoteVideos" style="z-index: -1;"></div>
     <script src='/socket.io/socket.io.js'></script>
     <script src="/js/video.js"></script>
 </body>

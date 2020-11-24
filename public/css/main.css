@@ -1,0 +1,98 @@
+
+html {
+    overflow: hidden;
+    height: 100%;
+}
+.one video {
+    object-fit: cover;
+}
+.localVideo {
+    width: 20%;
+    position: absolute;
+    z-index: 2;
+    bottom: 10px;
+    left: 10px;
+    display: block;
+}
+.remoteVideos {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
+.remoteVideos video {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0px;
+    min-height: 0px;
+}
+body {
+    background-color: black;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+textarea {
+    font-size: 20pt;
+}
+textarea:focus {
+    outline: none;
+}
+#sendReceive {
+    background-color: rgba(255, 255, 255, 0.25);
+    width: 20%;
+    margin: 10px;
+    padding: 10px;
+    backdrop-filter: blur(50px);
+    border-radius: 10px;
+    box-sizing:border-box;
+}
+#dataChannelReceive {
+    min-height: 200px;
+    width: 100%;
+    padding: 10px;
+    resize: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.50);
+    color: black;
+    box-sizing:border-box;
+}
+#dataChannelSend {
+    width: 100%;
+    resize: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.85);
+    color: black;
+    box-sizing:border-box;
+}
+#sendButton {
+    float: right;
+    font-size: 18pt;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 10px;
+    margin-top: 5px;
+}
+#sendButton:focus{
+    outline: none;
+}
+#buttons {
+    overflow: auto;
+}
