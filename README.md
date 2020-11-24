@@ -1,6 +1,6 @@
 # Video Chat avec WebRTC et Node.js
 
-> Fonctionne sur Ubuntu > 18.04 LTS ou Windows 10. Les commandes
+> Fonctionne sur Ubuntu > 18.04 LTS ou Windows 10.
 
 ## Installation et exécution
 
@@ -9,15 +9,15 @@
 3. Installer `npm` (> 6.0) et `node` (> 12.0)
 4. Exécuter `npm install`
 5. Exécuter `node server.js` (avec les droits administrateurs)
-6. Obtenir son adresse IP avec la commande `ifconfig` sur Linux ou `ipconfig` sur Windows par exemple
+6. Obtenir son adresse IP, avec la commande `ifconfig` sur Linux ou `ipconfig` sur Windows
 7. Se rendre à la page https://localhost sur sa machine ou bien https://mon-ip sur une autre machine du même réseau local (“continuer vers le site” si un message d'avertissement apparaît)
 8. Autoriser l’accès au micro et à la webcam
 
 ## Fonctionnement
 
-Pour des raisons de séucurité, il est nécessaire d'utiliser le port 443 (HTTPS) pour établir les connexions, avec un certificat et une clé privée. Ces données peuvent être générées avec la commande : ```openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem```
+Pour des raisons de séucurité, il est nécessaire d'utiliser le port 443 (HTTPS) pour établir les connexions, avec un certificat et une clé privée. Ces données peuvent être générées à nouveau avec la commande suivante sur Linux : ```openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem``` mais sont déjà présentes dans le dossier.
 
-L'application node utilise des sockets (socket.io) pour communiquer les informations des clients et `express` pour le serveur web.
+L'application Node utilise des sockets (`socket.io`) pour communiquer les informations des clients et `express` pour le serveur web.
 
 ### Communications
 
