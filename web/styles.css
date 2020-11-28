@@ -1,3 +1,8 @@
 body {
     font-family: 'Montserrat', sans-serif;
 }
+
+.img-archi {
+    max-width: 100%;
+    height: auto;
+}
