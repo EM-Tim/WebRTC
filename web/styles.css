@@ -1,8 +1,9 @@
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .img-archi {
-    max-width: 100%;
+    max-width: 90%;
     height: auto;
+    object-fit: contain;
 }
