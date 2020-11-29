@@ -13,3 +13,69 @@ body {
     height: auto;
     object-fit: contain;
 }
+
+.main-title, .main-container {
+    border-radius: 10px;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;
+}
+
+button:focus {
+    outline: none;
+}
+
+blockquote {
+    margin: 1rem 0;
+}
+
+blockquote > :last-child {
+    margin-bottom: 0;
+}
+
+blockquote > :first-child, li > :first-child {
+    margin-top: 0;
+}
+
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+
+blockquote blockquote {
+    padding-right: 0;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences, code, tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 2px 4px 0 4px;
+    font-size: 0.9em;
+}
+
+code {
+    text-align: left;
+    vertical-align: initial;
+}
+
+code {
+    font-size: 87.5%;
+    color: #0e4d70;
+    word-wrap: break-word;
+}
+
+code, kbd, pre, samp {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 1em;
+}

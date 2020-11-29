@@ -1,243 +1,354 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
     <title>WebRTC</title>
 </head>
-<body>
-    <header>
-        <div class="container text-center pt-3">
-            <h2>WebRTC</h2>
-        </div>
-    </header>
+<body class="container">
+<header class="m-3 mt-4">
+    <div class="text-center p-2 bg-light main-title">
+        <h1 class="m-0">WebRTC</h1>
+    </div>
+</header>
 
-    <section id="intro">
-        <div class="container">
-            <div class="row">
-                <h3>Introduction</h3>
-            </div>
+<section id="intro" class="main-container m-3 p-3 bg-light">
+    <div class="container">
+        <div class="row">
+            <h3>Introduction</h3>
         </div>
-    </section>
-    
-    <section id="presentation">
-        <div class="container">
+    </div>
+</section>
+
+<section id="presentation" class="main-container m-3 p-3 bg-light">
+    <div class="container">
+        <div class="row">
+            <h3>Présentation du protocole</h3>
+        </div>
+
+        <div class="container mt-3">
             <div class="row">
-                <h3>Présentation du protocole</h3>
+                <h5>Architectures possibles</h5>
             </div>
 
-            <div class="container">
-                <div class="row justify-content-center">
-                    <h5>Architectures possibles</h5>
+            <div class="row justify-content-center">
+                <!-- Mesh -->
+                <div class="col-md-4 col-12 text-center">
+                    <div class="row justify-content-center">
+                        <img class="img-archi w-100 m-2 p-2" src="data/mesh.png" alt="">
+                    </div>
+                    <div class="row ml-2 mr-2">
+                        <p>Chaque participant envoie ses données et reçoit celles des autres individuellement via des
+                            connexions de type peer-to-peer. Nécessite le téléchargement et téléversement des données
+                            depuis et vers chaque participant mais ne requiert pas de serveur.</p>
+                    </div>
                 </div>
 
-                <div class="row justify-content-center">
-                    <!-- Mesh -->
-                    <div class="col-md-4 col-12 text-center">
-                        <div class="row justify-content-center">
-                            <img class="img-archi" src="data/mesh.png" alt="">
-                        </div>
-                        <div class="row ml-2 mr-2">
-                            <p>Chaque participant envoie ses données et reçoit celles des autres individuellement via des connexions de type peer-to-peer. Nécessite le téléchargement et téléversement des données depuis et vers chaque participant mais ne requiert pas de serveur.</p>
-                        </div>
+                <!-- MCU -->
+                <div class="col-md-4 col-12 text-center">
+                    <div class="row justify-content-center">
+                        <img class="img-archi w-100 m-2 p-2" src="data/mcu.png" alt="">
                     </div>
-
-                    <!-- MCU -->
-                    <div class="col-md-4 col-12 text-center">
-                        <div class="row justify-content-center">
-                            <img class="img-archi" src="data/mcu.png" alt="">
-                        </div>
-                        <div class="row ml-2 mr-2">
-                            <p>Chaque participant communique avec un serveur central qui récupère les données de tous et les envoie sous forme de flux unique à tous les participants.</p>
-                        </div>
+                    <div class="row ml-2 mr-2">
+                        <p>Chaque participant communique avec un serveur central qui récupère les données de tous et les
+                            envoie sous forme de flux unique à tous les participants.</p>
                     </div>
+                </div>
 
-                    <!-- SFU -->
-                    <div class="col-md-4 col-12 text-center">
-                        <div class="row justify-content-center">
-                            <img class="img-archi" src="data/sfu.png" alt="">
-                        </div>
-                        <div class="row ml-2 mr-2">
-                            <p>Chaque participant communique avec un serveur central qui récupère les données de tous et les redirige individuellement vers les autres autres participants. Permet de limiter le nombre de téléversements par rapport au Mesh.</p>
-                        </div>
+                <!-- SFU -->
+                <div class="col-md-4 col-12 text-center">
+                    <div class="row justify-content-center">
+                        <img class="img-archi w-100 m-2 p-2" src="data/sfu.png" alt="">
+                    </div>
+                    <div class="row ml-2 mr-2">
+                        <p>Chaque participant communique avec un serveur central qui récupère les données de tous et les
+                            redirige individuellement vers les autres autres participants. Permet de limiter le nombre
+                            de téléversements par rapport au Mesh.</p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <h5>Protocoles de communication</h5>
-            <div class="container">
+        <h5>Protocoles de communication</h5>
+        <div class="container">
             <div class="row">
                 <h5>Équipements nécessaires</h5>
             </div>
-                <div class="row">
-                    <h6>Rappels NAT et firewall</h6>
-                </div>
-                <div class="row">
-                    <p>Un NAT est généralement utiliser pour router le traffic de plusieurs adresses IP privées vers une seule adresse IP publique</p>
-                </div>
-                <div class="row">
-                    <p>Un Firewall permet de bloquer certains traffic par le port, l'adressse IP, le protocole utilisé</p>
-                </div>
-                <div class="row">
-                    <h6>Serveur de signalisation</h6>
-                </div>
-                <div class="row">
-                    <p>Le serveur de signalisation permet d'échanger les métadonnées SDP liés au codecs, la résolution, les formats avant la connexion directe entre les pairs </p>
-                </div>
-                <div class="row">
-                    <h6>STUN/TURN serveur</h6>
-                </div>
-                <div class="row">
-                    <p> 
-                        STUN serveur permet au pair de connaître son addresse IP publique qui correspond à l'adresse IP externe du NAT 
-                        et de savoir si il est accessible directement derrière le NAT
-                    </p>
-                </div>
-                <div class="row">
-                    <p>
-                        Un TURN serveur est un relai entre les 2 pairs si l'un des deux n'est pas accesible directement derrière le NAT 
-                        à cause de la restriction "Symetric NAT". Cela signifie que le routeur n'accepte que les connexions de pairs auxquelles vous vous êtes déjà connecté.
-                    </p>
-                            
-                </div>
+            <div class="row">
+                <h6>Rappels NAT et firewall</h6>
             </div>
-    </section>
+            <div class="row">
+                <p>Un NAT est généralement utiliser pour router le traffic de plusieurs adresses IP privées vers une
+                    seule adresse IP publique</p>
+            </div>
+            <div class="row">
+                <p>Un Firewall permet de bloquer certains traffic par le port, l'adressse IP, le protocole utilisé</p>
+            </div>
+            <div class="row">
+                <h6>Serveur de signalisation</h6>
+            </div>
+            <div class="row">
+                <p>Le serveur de signalisation permet d'échanger les métadonnées SDP liés au codecs, la résolution, les
+                    formats avant la connexion directe entre les pairs </p>
+            </div>
+            <div class="row">
+                <h6>STUN/TURN serveur</h6>
+            </div>
+            <div class="row">
+                <p>
+                    STUN serveur permet au pair de connaître son addresse IP publique qui correspond à l'adresse IP
+                    externe du NAT
+                    et de savoir si il est accessible directement derrière le NAT
+                </p>
+            </div>
+            <div class="row">
+                <p>
+                    Un TURN serveur est un relai entre les 2 pairs si l'un des deux n'est pas accesible directement
+                    derrière le NAT
+                    à cause de la restriction "Symetric NAT". Cela signifie que le routeur n'accepte que les connexions
+                    de pairs auxquelles vous vous êtes déjà connecté.
+                </p>
 
-    <section id="types-appli">
-        <div class="container">
-            <div class="row">
-                <h3>Types d'application</h3>
             </div>
-            <div class="row">
-                <div class="container">
-                    <div class="row">
-                        <div class="container">
-                            <div class="row">
-                                <h5>VOD / Live / Conférence</h5>
-                            </div>
-                            <div class="row">
-                                <p>Les principales applications du protocole WebRTC sont dans la vidéo à la demande, mais aussi les lives et les conférences.</p>
-                            </div>
+        </div>
+    </div>
+</section>
+
+<section id="types-appli" class="main-container m-3 p-3 bg-light">
+    <div class="container">
+        <div class="row">
+            <h3>Types d'application</h3>
+        </div>
+        <div class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="container">
+                        <div class="row">
+                            <h5>VOD / Live / Conférence</h5>
+                        </div>
+                        <div class="row">
+                            <p>Les principales applications du protocole WebRTC sont dans la vidéo à la demande, mais
+                                aussi les lives et les conférences.</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="container">
-                            <div class="row">
-                                <h5>Exemple applications (JITSI)</h5>
-                            </div>
-                            <div class="row">
-                                <div class="col-10">
-                                    <p>Une application utilisant le protocole WebRTC est JITSI. Cette application permet de créer une visioconférence entre plusieurs 
-                                        utilisateurs, ainsi qu'un partage d'écran multiple</p>
-                                </div>
-                                <div class="col-2">
-                                    <img class="img-jitsi" src="data/jitsi.png" alt="">
-                                </div>
-                            </div>
+                </div>
+                <div class="row">
+                    <div class="container">
+                        <div class="row">
+                            <h5>Exemple applications (JITSI)</h5>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="container">
-                            <div class="row">
-                                <h5>Multi qualité</h5>
+                        <div class="row">
+                            <div class="col-10">
+                                <p>Une application utilisant le protocole WebRTC est JITSI. Cette application permet de
+                                    créer une visioconférence entre plusieurs
+                                    utilisateurs, ainsi qu'un partage d'écran multiple</p>
                             </div>
-                            <div class="row">
-                                <p>Une fonctionnalité du protocole WebRTC est le multi-qualité. En effet, en fonction de la bande passante disponible pour chaque 
-                                    participant, une qualité de vidéo adaptée lui est transmise, afin d'avoir la meilleure qualité de vidéo en conservant la transmission en temps réel</p>
+                            <div class="col-2">
+                                <img class="img-jitsi" src="data/jitsi.png" alt="">
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>     
-        </div>
-    </section>
-
-    <section id="avantages">
-        <div class="container">
-            <div class="row">
-                <h3>Avantages/Inconvénients</h3>
-            </div>
-
-            <!-- Tableau comparatif -->
-            <div class="row justify-content-center">
-                <table class="table text-center">
-                    <thead>
-                      <tr>
-                        <th scope="col">Avantages</th>
-                        <th scope="col">Inconvénients</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Pas besoin de logiciel tiers, tout passe par le navigateur</td>
-                        <td>Toujours en développement</td>
-                      </tr>
-                      <tr>
-                        <td>Large compatibilité des navigateurs</td>
-                        <td>Incertitude sur les futurs codecs
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Vidéo meilleure qualité que d’autres (Flash)</td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>Temps de latence réduits</td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>Sécurité de la communication</td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>Partage en peer to peer sans passer par un serveur intermédiaire</td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>Utilisation de la bande passante</td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>CPU client</td>
-                        <td></td>
-                      </tr>
-                    </tbody>
-                </table>
+                <div class="row">
+                    <div class="container">
+                        <div class="row">
+                            <h5>Multi qualité</h5>
+                        </div>
+                        <div class="row">
+                            <p>Une fonctionnalité du protocole WebRTC est le multi-qualité. En effet, en fonction de la
+                                bande passante disponible pour chaque
+                                participant, une qualité de vidéo adaptée lui est transmise, afin d'avoir la meilleure
+                                qualité de vidéo en conservant la transmission en temps réel</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="demo">
-        <div class="container">
-            <h3>Démo</h3>
+<section id="avantages" class="main-container m-3 p-3 bg-light">
+    <div class="container">
+        <div class="row">
+            <h3>Avantages/Inconvénients</h3>
         </div>
-    </section>
 
-    <section id="how-to">
-        <div class="container">
-
-                <h3>How to</h3>
-
-            <div class="row">
-                <h5>Code source</h5>
-            </div>
-            <div class="row">
-                <h5>Explication des méthodes de l'API JS</h5>
-            </div>
+        <!-- Tableau comparatif -->
+        <div class="row justify-content-center">
+            <table class="table text-center">
+                <thead>
+                <tr>
+                    <th scope="col">Avantages</th>
+                    <th scope="col">Inconvénients</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Pas besoin de logiciel tiers, tout passe par le navigateur</td>
+                    <td>Toujours en développement</td>
+                </tr>
+                <tr>
+                    <td>Large compatibilité des navigateurs</td>
+                    <td>Incertitude sur les futurs codecs
+                    </td>
+                </tr>
+                <tr>
+                    <td>Vidéo meilleure qualité que d’autres (Flash)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Temps de latence réduits</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Sécurité de la communication</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Partage en peer to peer sans passer par un serveur intermédiaire</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Utilisation de la bande passante</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>CPU client</td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="references">
-        <div class="container">
-            <div class="row">
-                <h3>Références</h3>
-            </div>
+<section id="demo" class="main-container m-3 p-3 bg-light">
+    <div class="container">
+        <h3>Démo</h3>
+        <button class="p-2 mb-2" onclick="openDemo()" style="margin-bottom: 20px">Démarrer</button>
+        <iframe id="iframeDemo"
+                allow="camera;microphone"
+                width="100%" height="0" frameborder="0"
+                allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
+<section id="how-to" class="main-container m-3 p-3 bg-light">
+    <div class="container">
+
+        <h3>How to</h3>
+
+        <div class="row">
+            <h5>Code source</h5>
         </div>
-    </section>
+        <div class="row">
+            <h5>Explication des méthodes de l'API JS</h5>
+        </div>
+        <h4><span>Video Chat avec WebRTC et Node.js</span>
+        </h4>
+        <blockquote><p><span>Fonctionne sur Ubuntu &gt; 18.04 LTS ou Windows 10.</span></p>
+            <p><span>Lien du code source : </span><a href='https://github.com/EM-Tim/WebRTC.git' target='_blank'
+                                                     class='url'>https://github.com/EM-Tim/WebRTC.git</a></p>
+        </blockquote>
+        <h4><span>Installation et exécution</span>
+        </h4>
+        <ol start=''>
+            <li><span>Installer Git et cloner le dépôt ou télécharger les sources</span></li>
+            <li>
+                <span>Installer </span><code>npm</code><span> (&gt; 6.0) et </span><code>node</code><span> (&gt; 12.0)</span>
+            </li>
+            <li>
+                <span>Se placer dans le répertoire WebRTC (vérifier que le fichier </span><code>package.json</code><span> est présent)</span>
+            </li>
+            <li><span>Exécuter </span><code>npm install</code></li>
+            <li><span>Exécuter </span><code>node server.js</code><span> (avec les droits administrateurs)</span>
+            </li>
+            <li>
+                <span>Obtenir son adresse IP, avec la commande </span><code>ifconfig</code><span> sur Linux ou </span><code>ipconfig</code><span> sur Windows</span>
+            </li>
+            <li><span>Se rendre à la page </span><a href='https://localhost' target='_blank' class='url'>https://localhost</a><span> sur sa machine ou bien </span><a
+                    href='https://mon-ip' target='_blank' class='url'>https://mon-ip</a><span> sur une autre machine du même réseau local (“continuer vers le site” si un message d&#39;avertissement apparaît)</span>
+            </li>
+            <li><span>Autoriser l’accès au micro et à la webcam</span></li>
+        </ol>
+        <h4><span>Fonctionnement</span></h4>
+        <p><span>Pour des raisons de séucurité, il est nécessaire d&#39;utiliser le port 443 (HTTPS) pour établir les connexions, avec un certificat et une clé privée. Ces données peuvent être générées à nouveau avec la commande suivante sur Linux : </span>
+            <br><code class="m-2">openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem</code>
+            <br><span> mais sont déjà présentes dans le dossier.</span>
+        </p>
+        <p><span>L&#39;application Node utilise des sockets (</span><code>socket.io</code><span>) pour communiquer les informations des clients et </span><code>express</code><span> pour le serveur web.</span>
+        </p>
+        <h4><span>Communications</span></h4>
+        <ul>
+            <li><span>Un utilisateur (&quot;User 1&quot;) qui se connecte au site depuis un navigateur se connecte au serveur via une socket. </span>
+            </li>
+            <li><span>Il rejoint un salon de communication. </span></li>
+            <li><span>L&#39;accès microphone et caméra est demandé juste après. </span></li>
+            <li><span>Après autorisation, le client (&quot;User 1&quot;) informe le serveur qu&#39;il est prêt à recevoir des métadonnées. </span>
+            </li>
+            <li>
+                <span>Le serveur se charge de retransmettre sa demande aux utilisateurs (&quot;User 2&quot;) du salon. </span>
+            </li>
+            <li><span>Ces derniers (&quot;User 2&quot;) créent une </span><code>RTCPeerConnection</code><span> avec en paramètres la configuration d&#39;un serveur STUN et TURN.</span>
+            </li>
+            <li><span>Ils (&quot;User 2&quot;) créent une offre SDP qu&#39;ils envoie au client faisant la demande (&quot;User 1&quot;) via le serveur (socket).</span>
+            </li>
+            <li><span>User 1 reçoit cette offre et créé une </span><code>RTCPeerConnection</code><span> et créé une réponse SDP renvoyée à User 2 via le serveur (socket).</span>
+            </li>
+            <li><span>Pour finaliser le lien entre les clients, les clients s&#39;envoient leur adresses IP et ports sous forme de </span><code>iceCandidate</code><span> pour qu&#39;ils se connectent entre eux.</span>
+            </li>
+            <li><span>De cette manière, les clients s&#39;échangent leurs informations permettant la création d&#39;une communication peer-to-peer.</span>
+            </li>
+            <li><span>Chacun reçoit le stream vidéo des autres participants et peut l&#39;afficher.</span></li>
+        </ul>
+        <p><img class="ml-4" src="https://raw.githubusercontent.com/EM-Tim/WebRTC/main/webrtc_socket_diagram.png"
+                width="50%" alt="diagram">
+        </p>
+        <h4><span>Structure des fichiers</span></h4>
+        <ul>
+            <li><code>server.js</code><span> : Lance le serveur web</span></li>
+            <li><code>RoomService.js</code><span> : Gère les messages de signalisation côté serveur</span></li>
+            <li><code>video.js</code><span> : Gère les messages de signalisation côté client et affiche les données et vidéos sur la page</span>
+            </li>
+        </ul>
+        <h4><span>Log WebRTC dans le navigateur</span></h4>
+        <ul>
+            <li><p>
+                <span>Les statistiques et détails de session sont visibles sur les navigateurs aux liens suivants</span>
+            </p>
+                <ul>
+                    <li><span>Firefox </span><code>about:webrtc</code></li>
+                    <li><span>Google Chrome : </span><code>chrome://webrtc-internals</code></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section id="references" class="main-container m-3 p-3 bg-light">
+    <div class="container">
+        <div class="row">
+            <h3>Références</h3>
+        </div>
+    </div>
+</section>
 </body>
 </html>
+
+<script>
+    function openDemo() {
+        document.querySelector("#iframeDemo").setAttribute('src', "https://diffusion-video.ddns.net");
+        document.querySelector("#iframeDemo").setAttribute('height', "600");
+    }
+</script>
