@@ -70,10 +70,42 @@
             </div>
 
             <h5>Protocoles de communication</h5>
-
-            <h5>Équipements nécessaires</h5>
-
-        </div>
+            <div class="container">
+            <div class="row">
+                <h5>Équipements nécessaires</h5>
+            </div>
+                <div class="row">
+                    <h6>Rappels NAT et firewall</h6>
+                </div>
+                <div class="row">
+                    <p>Un NAT est généralement utiliser pour router le traffic de plusieurs adresses IP privées vers une seule adresse IP publique</p>
+                </div>
+                <div class="row">
+                    <p>Un Firewall permet de bloquer certains traffic par le port, l'adressse IP, le protocole utilisé</p>
+                </div>
+                <div class="row">
+                    <h6>Serveur de signalisation</h6>
+                </div>
+                <div class="row">
+                    <p>Le serveur de signalisation permet d'échanger les métadonnées SDP liés au codecs, la résolution, les formats avant la connexion directe entre les pairs </p>
+                </div>
+                <div class="row">
+                    <h6>STUN/TURN serveur</h6>
+                </div>
+                <div class="row">
+                    <p> 
+                        STUN serveur permet au pair de connaître son addresse IP publique qui correspond à l'adresse IP externe du NAT 
+                        et de savoir si il est accessible directement derrière le NAT
+                    </p>
+                </div>
+                <div class="row">
+                    <p>
+                        Un TURN serveur est un relai entre les 2 pairs si l'un des deux n'est pas accesible directement derrière le NAT 
+                        à cause de la restriction "Symetric NAT". Cela signifie que le routeur n'accepte que les connexions de pairs auxquelles vous vous êtes déjà connecté.
+                    </p>
+                            
+                </div>
+            </div>
     </section>
 
     <section id="types-appli">
@@ -162,7 +194,7 @@
                         <td></td>
                       </tr>
                       <tr>
-                        <td>utilisation de la bande passante</td>
+                        <td>Utilisation de la bande passante</td>
                         <td></td>
                       </tr>
                       <tr>
