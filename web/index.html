@@ -26,6 +26,46 @@
     <div class="container">
         <div class="row">
             <h3>Introduction</h3>
+            <p> <b> Comment naquit WebRTC ?<br/></b>
+                La nécessité et la volonté de faire des vidéoconférences et de communiquer sur le web existe depuis un certain temps 
+                et des technologies pour faire de la diffusion vidéo existaient avant Webrtc comme les protocoles <strong>HLS</strong> (pour HTTP Live Streaming), <strong>MPEG-DASH</strong> (Dynamic Adaptative Streaming over HTTP). 
+                Ces protocoles impliquent une latence de niveau intermédiaire comme ils sont basés sur HTTP, lui-même basé sur TCP/IP.<br/> 
+                Avec HLS ou MPEG-DASH, par exemple, on aura un écart de l’ordre de 30 à 45 secondes entre la captation du flux multimédia et l’écoute de celui-ci dans le navigateur.
+                Or lorsqu’on fait de la visio-conférence une latence de plusieurs secondes est inimaginable.<br/>
+                Il existe aussi d’autres protocoles comme <strong>RTMP </strong>qui n’est pas basé sur HTTP et offre une faible latence, mais qui nécessite un plugin Flash pour être utilisé dans un navigateur. 
+                Le problème étant que Flash appartenait à une seule compagnie, son développement n’était ni concerté ni ouvert dépourvu de standard et cette technologie opérait dans un navigateur Web comme une boîte noire. 
+                Du point de vue de l'utilisateur, cela nécessitait des installations supplémentaires. Du point de vue du développeur, il fallait étudier une pile et des protocoles complexes. <br/>
+                Avec HTML5, l’idée est d’apporter les fonctionnalités directement dans le navigateur et d’instaurer des API réellement natives (du point de vue du navigateur) et développées de façon collaborative et ouverte par les acteurs de l’industrie. 
+                C’est ainsi naquit la spécification WebRTC pour Web Real-Time Communication.
+                WebRTC entend rendre possible les communications multimédias en temps réel dans un contexte Web en évacuant la nécessité d’une installation préalable
+            </p>
+            <p> <b>Dates clés </b></p>
+            <ul>
+                <li> <strong>Mai 2010:</strong> La technologie WebRTC a d'abord été développée par Global IP Solutions (ou GIPS), une société fondée vers 1999 en Suède. 
+                    En mai 2010, GIPS a été rachetée par Google.Ce standard fut défini conjointement par le W3C Working Group, qui se chargea de la définition des API dans le navigateur et l’IETF Working Group, qui s’occupa des aspects plus techniques des protocoles d’échange, du format des données, de la sécurité, etc.
+                </li>
+                <li>
+                    <strong>Mai 2011:</strong>premières ébauches. Afin d'en assurer le développement, une liste dédiée a été créée au sein du W3C dès avril 2011 ainsi qu'un groupe de travail au sein de l'IETF en mai 2011
+                </li>
+                <li>
+                    <strong>Novembre 2011 : </strong> Chrome 23 ajoute Webrtc 
+                </li>
+                <li>
+                    <strong>Janvier 2013:</strong>Firefox 20 ajoute Webrtc avec seulement quelques fonctionnalités
+                </li>
+                <li>
+                   <strong> Février 2013: </strong>  Interopérabilité entre Firefox et chrome. Mais tout ne se passe pas comme prévu. Il faudra attendre <strong>juin 2013</strong> pour que Firefox supporte correctement WebRTC 
+                </li>
+                <li>
+                    <strong>Août 2013: </strong> Chrome 29 pour Android supporte maintenant WebRTC
+                </li>
+                <li>
+                    <strong>Avril 2017: </strong>Microsoft supporte officiellement WebRTC
+                </li>
+                <li>
+                    <strong>Septembre 2017: </strong> Safari supporte WebRTC
+                </li>
+            </ul>
         </div>
     </div>
 </section>
@@ -81,6 +121,25 @@
 
         <h5>Protocoles de communication</h5>
         <div class="container">
+            <img class="img-protocole" src="data/protocole_webrtc.png" alt="">
+            <ul>
+                <li> <strong>DLTS</strong> est utilisé comme couche obligatoire de sécurité et de cryptage
+                </li>
+                <li>
+                    <strong>SRTP</strong> est le protocole utilisé pour le transport des flux audio/vidéo
+                </li>
+                <li>
+                    <strong>SCTP</strong> est utilisé comme transport des autres données applicatives
+                </li>
+                <li>
+                    <strong>DataChannel</strong> permet l’échange de données arbitraires (textuelles ou binaires) entre navigateurs et est entièrement dépendante de l’objet RTCPeerConnection car elle nécessite une connexion déjà ouverte
+
+                </li>
+                <li>
+                    <strong>RTCPeerConnection</strong> est responsable de la communication des contenus audio et vidéo. C’est par cette interface que deux pairs vont apprendre à communiquer ensemble et vont établir un tunnel de partage de contenu multimédia (par SRTP).
+                    RTCPeerConnection s’occupe des étapes d’initialisation de la connexion entre les pairs, la gestion de la session, l’envoi des flux multimédias et l’état de la communication.
+                </li>
+            </ul>
             <div class="row">
                 <h5>Équipements nécessaires</h5>
             </div>
