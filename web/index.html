@@ -18,7 +18,7 @@
 <body class="container">
 <header class="m-3 mt-4">
     <div class="text-center p-2 bg-light main-title">
-        <h1 class="m-0">WebRTC</h1>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/WebRTC_Logo.svg" alt="logo" class="w-25">
     </div>
 </header>
 
@@ -26,41 +26,41 @@
     <div class="container">
         <div class="row">
             <h3>Introduction</h3>
-            <p> <b> Comment naquit WebRTC ?<br/></b>
-                La nécessité et la volonté de faire des vidéoconférences et de communiquer sur le web existe depuis un certain temps 
-                et des technologies pour faire de la diffusion vidéo existaient avant Webrtc comme les protocoles <strong>HLS</strong> (pour HTTP Live Streaming), <strong>MPEG-DASH</strong> (Dynamic Adaptative Streaming over HTTP). 
-                Ces protocoles impliquent une latence de niveau intermédiaire comme ils sont basés sur HTTP, lui-même basé sur TCP/IP.<br/> 
+            <p class="text-justify"> <b>Naissance de WebRTC<br/></b>
+                La nécessité et la volonté de faire des vidéoconférences et de communiquer sur le web existe depuis un certain temps
+                et des technologies pour faire de la diffusion vidéo existaient avant Webrtc comme les protocoles <strong>HLS</strong> (pour HTTP Live Streaming), <strong>MPEG-DASH</strong> (Dynamic Adaptative Streaming over HTTP).
+                Ces protocoles impliquent une latence de niveau intermédiaire comme ils sont basés sur HTTP, lui-même basé sur TCP/IP.<br/>
                 Avec HLS ou MPEG-DASH, par exemple, on aura un écart de l’ordre de 30 à 45 secondes entre la captation du flux multimédia et l’écoute de celui-ci dans le navigateur.
                 Or lorsqu’on fait de la visio-conférence une latence de plusieurs secondes est inimaginable.<br/>
-                Il existe aussi d’autres protocoles comme <strong>RTMP </strong>qui n’est pas basé sur HTTP et offre une faible latence, mais qui nécessite un plugin Flash pour être utilisé dans un navigateur. 
-                Le problème étant que Flash appartenait à une seule compagnie, son développement n’était ni concerté ni ouvert dépourvu de standard et cette technologie opérait dans un navigateur Web comme une boîte noire. 
+                Il existe aussi d’autres protocoles comme <strong>RTMP </strong>qui n’est pas basé sur HTTP et offre une faible latence, mais qui nécessite un plugin Flash pour être utilisé dans un navigateur.
+                Le problème étant que Flash appartenait à une seule compagnie, son développement n’était ni concerté ni ouvert dépourvu de standard et cette technologie opérait dans un navigateur Web comme une boîte noire.
                 Du point de vue de l'utilisateur, cela nécessitait des installations supplémentaires. Du point de vue du développeur, il fallait étudier une pile et des protocoles complexes. <br/>
-                Avec HTML5, l’idée est d’apporter les fonctionnalités directement dans le navigateur et d’instaurer des API réellement natives (du point de vue du navigateur) et développées de façon collaborative et ouverte par les acteurs de l’industrie. 
+                Avec HTML5, l’idée est d’apporter les fonctionnalités directement dans le navigateur et d’instaurer des API réellement natives (du point de vue du navigateur) et développées de façon collaborative et ouverte par les acteurs de l’industrie.
                 C’est ainsi naquit la spécification WebRTC pour Web Real-Time Communication.
                 WebRTC entend rendre possible les communications multimédias en temps réel dans un contexte Web en évacuant la nécessité d’une installation préalable
             </p>
             <p> <b>Dates clés </b></p>
             <ul>
-                <li> <strong>Mai 2010:</strong> La technologie WebRTC a d'abord été développée par Global IP Solutions (ou GIPS), une société fondée vers 1999 en Suède. 
+                <li> <strong>Mai 2010:</strong> La technologie WebRTC a d'abord été développée par Global IP Solutions (ou GIPS), une société fondée vers 1999 en Suède.
                     En mai 2010, GIPS a été rachetée par Google.Ce standard fut défini conjointement par le W3C Working Group, qui se chargea de la définition des API dans le navigateur et l’IETF Working Group, qui s’occupa des aspects plus techniques des protocoles d’échange, du format des données, de la sécurité, etc.
                 </li>
                 <li>
                     <strong>Mai 2011:</strong>premières ébauches. Afin d'en assurer le développement, une liste dédiée a été créée au sein du W3C dès avril 2011 ainsi qu'un groupe de travail au sein de l'IETF en mai 2011
                 </li>
                 <li>
-                    <strong>Novembre 2011 : </strong> Chrome 23 ajoute Webrtc 
+                    <strong>Novembre 2011 : </strong> Chrome 23 ajoute Webrtc
                 </li>
                 <li>
                     <strong>Janvier 2013:</strong>Firefox 20 ajoute Webrtc avec seulement quelques fonctionnalités
                 </li>
                 <li>
-                   <strong> Février 2013: </strong>  Interopérabilité entre Firefox et chrome. Mais tout ne se passe pas comme prévu. Il faudra attendre <strong>juin 2013</strong> pour que Firefox supporte correctement WebRTC 
+                   <strong> Février 2013: </strong>  Interopérabilité entre Firefox et chrome. Mais tout ne se passe pas comme prévu. Il faudra attendre <strong>juin 2013</strong> pour que Firefox supporte correctement WebRTC
                 </li>
                 <li>
                     <strong>Août 2013: </strong> Chrome 29 pour Android supporte maintenant WebRTC
                 </li>
                 <li>
-                    <strong>Avril 2017: </strong>Microsoft supporte officiellement WebRTC
+                    <strong>Avril 2017: </strong>Microsoft Edge supporte officiellement WebRTC
                 </li>
                 <li>
                     <strong>Septembre 2017: </strong> Safari supporte WebRTC
@@ -87,7 +87,8 @@
                     <div class="row justify-content-center">
                         <img class="img-archi w-100 m-2 p-2" src="data/mesh.png" alt="">
                     </div>
-                    <div class="row ml-2 mr-2">
+                    <div class="row ml-2 mr-2 justify-content-center">
+                        <p class="font-weight-bold">MESH</p>
                         <p>Chaque participant envoie ses données et reçoit celles des autres individuellement via des
                             connexions de type peer-to-peer. Nécessite le téléchargement et téléversement des données
                             depuis et vers chaque participant mais ne requiert pas de serveur.</p>
@@ -99,7 +100,8 @@
                     <div class="row justify-content-center">
                         <img class="img-archi w-100 m-2 p-2" src="data/mcu.png" alt="">
                     </div>
-                    <div class="row ml-2 mr-2">
+                    <div class="row ml-2 mr-2 justify-content-center">
+                        <p class="font-weight-bold">MCU</p>
                         <p>Chaque participant communique avec un serveur central qui récupère les données de tous et les
                             envoie sous forme de flux unique à tous les participants.</p>
                     </div>
@@ -110,7 +112,8 @@
                     <div class="row justify-content-center">
                         <img class="img-archi w-100 m-2 p-2" src="data/sfu.png" alt="">
                     </div>
-                    <div class="row ml-2 mr-2">
+                    <div class="row ml-2 mr-2 justify-content-center">
+                        <p class="font-weight-bold">SFU</p>
                         <p>Chaque participant communique avec un serveur central qui récupère les données de tous et les
                             redirige individuellement vers les autres autres participants. Permet de limiter le nombre
                             de téléversements par rapport au Mesh.</p>
@@ -140,11 +143,17 @@
                     RTCPeerConnection s’occupe des étapes d’initialisation de la connexion entre les pairs, la gestion de la session, l’envoi des flux multimédias et l’état de la communication.
                 </li>
             </ul>
+        </div>
+
+        <h5>Schéma général</h5>
+        <div class="container row">
+            <img src="data/general.jpg" alt="genera" class="w-100 mt-2 mb-4">
+        </div>
+
+        <h5>Équipements nécessaires</h5>
+        <div class="container">
             <div class="row">
-                <h5>Équipements nécessaires</h5>
-            </div>
-            <div class="row">
-                <h6>Rappels NAT et firewall</h6>
+                <h6 class="font-weight-bold">Rappels NAT et firewall</h6>
             </div>
             <div class="row">
                 <p>Un NAT est généralement utiliser pour router le traffic de plusieurs adresses IP privées vers une
@@ -154,14 +163,14 @@
                 <p>Un Firewall permet de bloquer certains traffic par le port, l'adressse IP, le protocole utilisé</p>
             </div>
             <div class="row">
-                <h6>Serveur de signalisation</h6>
+                <h6 class="font-weight-bold">Serveur de signalisation</h6>
             </div>
             <div class="row">
                 <p>Le serveur de signalisation permet d'échanger les métadonnées SDP liés au codecs, la résolution, les
                     formats avant la connexion directe entre les pairs </p>
             </div>
             <div class="row">
-                <h6>STUN/TURN serveur</h6>
+                <h6 class="font-weight-bold">STUN/TURN serveur</h6>
             </div>
             <div class="row">
                 <p>
@@ -217,14 +226,14 @@
                             </div>
                         </div>
                         <div class="row mb-3">
+                            <div class="col-8">
+                                <p>Discord et Facebook Messenger sont aussi basées sur le protocole WebRTC.</p>
+                            </div>
                             <div class="col-2">
                                 <img class="img-discord" src="data/discord.png" alt="">
                             </div>
                             <div class="col-2">
                                 <img class="img-messenger" src="data/messenger.png" alt="">
-                            </div>
-                            <div class="col-8">
-                                <p>Discord et Facebook Messenger sont aussi basées sur le protocole WebRTC.</p>
                             </div>
                         </div>
                     </div>
@@ -311,20 +320,16 @@
                 width="100%" height="0" frameborder="0"
                 allowfullscreen>
         </iframe>
+        <h4>Diagramme de séquence</h4>
+        <img src="data/sequence.jpg" alt="sequence" class="w-50">
     </div>
 </section>
 
 <section id="how-to" class="main-container m-3 p-3 bg-light">
     <div class="container">
 
-        <h3>How to</h3>
+        <h3 class="mb-3">How to</h3>
 
-        <div class="row">
-            <h5>Code source</h5>
-        </div>
-        <div class="row">
-            <h5>Explication des méthodes de l'API JS</h5>
-        </div>
         <h4><span>Video Chat avec WebRTC et Node.js</span>
         </h4>
         <blockquote><p><span>Fonctionne sur Ubuntu &gt; 18.04 LTS ou Windows 10.</span></p>
