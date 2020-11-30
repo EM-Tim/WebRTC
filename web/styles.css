@@ -9,7 +9,19 @@ body {
 }
 
 .img-jitsi {
+    max-width: 40%;
+    height: auto;
+    object-fit: contain;
+}
+
+.img-discord {
     max-width: 50%;
+    height: auto;
+    object-fit: contain;
+}
+
+.img-messenger {
+    max-width: 80%;
     height: auto;
     object-fit: contain;
 }
