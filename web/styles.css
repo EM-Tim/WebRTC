@@ -79,3 +79,12 @@ code, kbd, pre, samp {
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: 1em;
 }
+.img-protocole {
+    max-width: 80%;
+    height: 250px;
+    justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+}
